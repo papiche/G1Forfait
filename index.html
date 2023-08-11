@@ -14,7 +14,6 @@
       align-items: center;
       font-family: Arial, sans-serif;
       margin: 0;
-      overflow: hidden;
     }
 
     .container {
@@ -140,11 +139,11 @@ Trouvez facilement le forfait à pratiquer pour conserver votre activité dans u
     <label for="price1">Forfait Cool</label>
 
     <br>
-    <input type="radio" id="price2" name="price" value="2">
+    <input type="radio" id="price2" name="price" value="2" checked="checked">
     <label for="price2">Forfait Juste</label>
 
     <br>
-    <input type="radio" id="price3" name="price" value="3" checked="checked">
+    <input type="radio" id="price3" name="price" value="3">
     <label for="price3">Forfait Carré</label>
 
     <p></p>
@@ -163,6 +162,7 @@ Trouvez facilement le forfait à pratiquer pour conserver votre activité dans u
       var paf = parseInt(pafInput);
       var pafBy2 = paf / 2;
       var pafBy4 = paf / 4;
+      var pafBy8 = paf / 8;
 
       var pifInput = document.getElementById("pif").value;
       var pif = parseInt(pifInput);
@@ -185,6 +185,12 @@ Trouvez facilement le forfait à pratiquer pour conserver votre activité dans u
         totalDU = pif * units;
         duText = "";
       } else if (priceType === 3) {
+        totalPrice = pafBy4 * units;
+        pouf = pif * units;
+        totalDU = Math.pow(pouf, 2);
+//        totalDU = [...Array(pouf).keys()].map(i => Math.pow(i + 1, 2)).reduce((a, b) => a + b, 0);
+        duText = (totalDU === 1) ? "" : "";
+      } else if (priceType === 4) {
         totalPrice = pafBy4 * units;
         pouf = pif * units;
         totalDU = [...Array(pouf).keys()].map(i => Math.pow(i + 1, 2)).reduce((a, b) => a + b, 0);
