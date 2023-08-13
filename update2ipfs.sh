@@ -13,7 +13,7 @@ OLD=$(cat ${MY_PATH}/.chain)
 cp ${MY_PATH}/.chain \
         ${MY_PATH}/.chain.$(cat ${MY_PATH}/.moats)
 
-TW=$(ipfs add -wq ${MY_PATH}/index.html | tail -n 1)
+TW=$(ipfs add -rwHq ${MY_PATH}/*.* | tail -n 1)
 
 [[ ${TW} == ${OLD} ]] && echo "No change." && exit 1
 
@@ -24,6 +24,6 @@ sed -i "s~${OLD}~${TW}~g" ${MY_PATH}/README.md
 
 echo '
 git add .
-git commit -m "Try ME /ipfs/${TW}"
+git commit -m "Try ME /ipfs/'${TW}'"
 git push
 '
