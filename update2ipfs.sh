@@ -21,6 +21,7 @@ echo ${TW} > ${MY_PATH}/.chain
 echo ${MOATS} > ${MY_PATH}/.moats
 
 sed -i "s~${OLD}~${TW}~g" ${MY_PATH}/README.md
+sed -i "s~${OLD}~${TW}~g" ${MY_PATH}/index.html
 
 echo '
 git add .

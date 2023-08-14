@@ -1,7 +1,7 @@
 # Calculateur de Forfait UNL/ML
 
-* Cool : PAF + POUF (DU offert ! )
-* Juste : PAF/2 + POUF
-* Carré : PAF/4 + POUF²
+* Cool : PAF + PIF  offert !
+* Juste : PAF/2 + PIF
+* Carré : PAF/4 + PIF²
 
-[ESSAYEZ LA DERNIERE VERSION](http://ipfs.asycn.io/ipfs/QmYRXWPdyZ61esiUFEHxUh563TbXuH2sRxwr5e1k9emWAi)
+[ESSAYEZ LA DERNIERE VERSION](http://ipfs.asycn.io/ipfs/QmUWbAHypxn72venh7im1xhu1KprurYLMEPpP9QfbrtAfx)
