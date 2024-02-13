@@ -158,6 +158,22 @@ Trouvez facilement le forfait à pratiquer pour conserver votre activité dans u
   </div>
 
   <script>
+
+      // Function to extract URL parameters
+      function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        const results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+      }
+
+      // Set default values for PIF and PAF from URL parameters
+      const defaultPAF = getUrlParameter('paf') || '40';
+      const defaultPIF = getUrlParameter('pif') || '3';
+
+      document.getElementById("paf").value = defaultPAF;
+      document.getElementById("pif").value = defaultPIF;
+
     function calculatePrice() {
       var pafInput = document.getElementById("paf").value;
       var paf = parseInt(pafInput);
