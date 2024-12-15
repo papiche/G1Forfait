@@ -33,6 +33,6 @@ sed -i "s~${OLD}~${TW}~g" ${MY_PATH}/index.html
 
 echo '# MAKE YOUR GIT IPFS LINKING
 git add .
-git commit -m "Try ME /ipfs/'${TW}'"
+git commit -m "Try ME https://ipfs.copylaradio.com/ipfs/'${TW}'"
 git push
 '
