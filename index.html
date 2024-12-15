@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-  <link rel="icon" type="image/png" href="https://www.cine-resonance.fr/Application/G1FABLAB.png">
+  <link rel="icon" type="image/png" href="https://ipfs.copylaradio.com/ipfs/Qmb9TpMTYT672dDa8uQuJ2fGDwPAAtXW3nJK2xWMgN8bVf">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>G1Forfait PIF/PAF (UNL/ML) DU² - G1FabLab -</title>
@@ -167,11 +167,13 @@ Trouvez facilement le forfait à pratiquer pour conserver votre activité dans u
       }
 
       // Set default values for PIF and PAF from URL parameters
-      const defaultPAF = getUrlParameter('paf') || '40';
       const defaultPIF = getUrlParameter('pif') || '3';
+      const defaultPAF = getUrlParameter('paf') || '40';
+      const defaultUnits = getUrlParameter('units') || '1';
 
       document.getElementById("paf").value = defaultPAF;
       document.getElementById("pif").value = defaultPIF;
+      document.getElementById("units").value = defaultUnits;
 
     function calculatePrice() {
       var pafInput = document.getElementById("paf").value;
