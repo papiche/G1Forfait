@@ -121,7 +121,7 @@ Etablissez la "Participation Individuelle Forfaitaire" (PIF/DU) et la "Participa
      <br>
      <label for="pif">PIF (DU) par Unité :</label>
     <br>
-    <input type="number" id="pif" min="1" class="input-field" value="3">
+    <input type="number" id="pif" min="1" class="input-field" value="1">
     <br>
     <label for="paf">PAF (€) par Unité :</label>
     <br>
@@ -135,15 +135,15 @@ Etablissez la "Participation Individuelle Forfaitaire" (PIF/DU) et la "Participa
 
     <input type="radio" id="price1" name="price" value="1">
     <label for="price1">Forfait Cool </label>
-= le PAF avec le PIF offert
+= 2 x le PAF + le PIF offert
     <br>
     <input type="radio" id="price2" name="price" value="2" checked="checked">
     <label for="price2">Forfait Juste </label>
-= le 1/2 PAF + le PIF
+= le PAF + le PIF
     <br>
     <input type="radio" id="price3" name="price" value="3">
     <label for="price3">Forfait Carré </label>
-= le 1/4 PAF + ( PIF ) ²
+= le 1/2 PAF + ( PIF ) ²
     <p></p>
     <button class="btn-calculate" onclick="calculatePrice()">
       <span class="calculate-text">Calculer</span>
@@ -152,7 +152,7 @@ Etablissez la "Participation Individuelle Forfaitaire" (PIF/DU) et la "Participa
     <div class="result" id="result"><b>Pour nn unités :<br></b>xx €<br>yy DUs </div>
     <br>
         - <a href='https://github.com/papiche/G1Forfait' target='code'>code source</a> - <br>
-        IPFS : <a target="_blank" href="https://ipfs.copylaradio.com/ipfs/QmXmQrrBssCBAurBPqnjYphEFNj6FRYiZ7SMJUchikidX7">/ipfs/QmXmQrrBssCBAurBPqnjYphEFNj6FRYiZ7SMJUchikidX7</a>
+        IPFS : <a target="_blank" href="https://ipfs.copylaradio.com/ipfs/QmZpabh9U6NcNLDStAxWWDVTrgncpV798J5aTTgUtDEJwa">/ipfs/QmZpabh9U6NcNLDStAxWWDVTrgncpV798J5aTTgUtDEJwa</a>
   </div>
 
   <script>
@@ -167,7 +167,7 @@ Etablissez la "Participation Individuelle Forfaitaire" (PIF/DU) et la "Participa
 
       // Set default values for PIF and PAF from URL parameters
       const defaultPIF = getUrlParameter('pif') || '3';
-      const defaultPAF = getUrlParameter('paf') || '40';
+      const defaultPAF = getUrlParameter('paf') || '20';
       const defaultUnits = getUrlParameter('units') || '1';
 
       document.getElementById("paf").value = defaultPAF;
@@ -177,9 +177,8 @@ Etablissez la "Participation Individuelle Forfaitaire" (PIF/DU) et la "Participa
     function calculatePrice() {
       var pafInput = document.getElementById("paf").value;
       var paf = parseInt(pafInput);
+      var pafx2 = paf * 2;
       var pafBy2 = paf / 2;
-      var pafBy4 = paf / 4;
-      var pafBy8 = paf / 8;
 
       var pifInput = document.getElementById("pif").value;
       var pif = parseInt(pifInput);
@@ -194,23 +193,17 @@ Etablissez la "Participation Individuelle Forfaitaire" (PIF/DU) et la "Participa
       var totalPrice, totalDU, duText;
 
       if (priceType === 1) {
-        totalPrice = paf * units;
+        totalPrice = pafx2 * units;
         totalDU = pif * units;
         duText = (totalDU === 1) ? "offert" : "offerts";
       } else if (priceType === 2) {
-        totalPrice = pafBy2 * units;
+        totalPrice = paf * units;
         totalDU = pif * units;
         duText = "";
       } else if (priceType === 3) {
-        totalPrice = pafBy4 * units;
+        totalPrice = pafBy2 * units;
         pouf = pif * units;
         totalDU = Math.pow(pouf, 2);
-//        totalDU = [...Array(pouf).keys()].map(i => Math.pow(i + 1, 2)).reduce((a, b) => a + b, 0);
-        duText = (totalDU === 1) ? "" : "";
-      } else if (priceType === 4) {
-        totalPrice = pafBy4 * units;
-        pouf = pif * units;
-        totalDU = [...Array(pouf).keys()].map(i => Math.pow(i + 1, 2)).reduce((a, b) => a + b, 0);
         duText = (totalDU === 1) ? "" : "";
       }
 
